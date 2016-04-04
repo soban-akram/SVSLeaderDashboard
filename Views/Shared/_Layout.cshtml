@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/logo.png" />
+    <title>@ViewBag.Title - Leaders DashBoard</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        body {
+            background-image: url("Images/svs_01.png");
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
+        <div class="container">
+            <div class="navbar-header" style="text-decoration-color: gray;">
+                <a class="navbar-brand" href="#">
+                    <img width="25" height="25" src="~/Images/logo.png">
+                </a>                
+                @Html.ActionLink("SVS - Leaders DashBoard", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" style="width:1024px;">
+        @RenderBody()
+        <hr />
+        <footer style="text-decoration-color: white;">
+            <center>
+                <font color="white"> &copy; @DateTime.Now.Year - All rights reserved.</font>
+            </center>           
+            <center>
+                <font color="white">     By  <a href="https://www.facebook.com/msalhr" style="margin-right:15px"> M.Soban Akram</a></font>
+</center>
+            
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@using SVS.Controllers;
+@{
+    ViewBag.Title = "Share Via SMS";
+
+    for (int n = 1; n <= 10; n++)
+    {
+        if (ViewBag.Total < (n * 1000))
+        {
+            ViewBag.Pro = (n * 1000);
+            break;
+        }
+    }   
+
+    for (int n = 1; n <= 10; n++)
+    {
+        if (ViewBag.CTotal < (n * 1000))
+        {
+            ViewBag.CPro = (n * 1000);
+            break;
+        }
+    }
+}
+
+<br />
+<br />
+<div class="jumbotron">
+    <div class="row">
+        <h2>SVS Leaders Performance</h2>
+        <div class="row">
+            Total Downloads
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="@(ViewBag.Total)" aria-valuemin="0" aria-valuemax="@(ViewBag.Pro)" style="width: @(ViewBag.Total/(ViewBag.Pro/100))%;">
+                    @(ViewBag.Total)/@(ViewBag.Pro)
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">            
+            Current Downloads
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="@(ViewBag.CTotal)" aria-valuemin="0" aria-valuemax="@(ViewBag.CPro)" style="width: @(ViewBag.CTotal/(ViewBag.CPro/100))%;">
+                    @(ViewBag.CTotal)/@(ViewBag.CPro)
+                </div>
+            </div>
+       </div>
+    </div>
+
+    <div class="dataTable_wrapper">
+        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Current Downloads</th>
+                    <th>Total Downloads</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{ int i = 1;}
+                @foreach (KeyValuePair<string, int> u in ViewBag.CDownloads)
+                {
+                    <tr class="gradeA">
+                        <td>@i</td>
+                        <td>@ViewBag.Names[u.Key]</td>
+                        <td>@u.Key</td>
+                        <td>@u.Value</td>
+                        <td>@ViewBag.Downloads[u.Key]</td>
+                    </tr>
+
+                    i++;
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
